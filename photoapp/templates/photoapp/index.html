@@ -1,0 +1,42 @@
+{% block_content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <h2 class="text-center text-primary">
+            {{ request.user.username}}photos
+        </h2>
+        {% if photo %}
+        {% for photo in photos %}
+        <div class="col-sm-3">
+            <div class="thumbnail">
+                <a href="{% url 'photoapp:detail' photo.id %}">
+                    <img src="{{ photo.description.url}}" class="img img-thumbnail" style="height:250px; width:100px"></a>
+                <div class="caption">
+                <h3 class="{{photo.description}}"></h3>
+                    <form method="post" action="{% url 'photoapp:delete_photo' %}"
+
+                {% csrf_token %}
+                <input type="hidden"name="photo_id" value="{{photo.id}}">
+                <a href="{% url 'photoapp:update_photo' photo.id%"}
+                   <span class="glymphicon glymphicon-star"></span>
+                </a>
+                <input type="hidden"name="photo_id" value="{{photo.id}}">
+                <a href="{% url 'photoapp:delete_photo' photo.id%"}
+                   <span class="glymphicon glymphicon-trash"></span>
+                </a>
+                    </form>
+
+
+                </div>
+
+
+             </div>
+        </div>
+
+        {% endfor %}
+    {% endif %}
+
+
+    </div>
+</div>
+{% endblock %}

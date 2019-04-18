@@ -1,0 +1,25 @@
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="panel panel-heading">
+                    <h2 class="text-center text-primary">Signup</h2>
+                </div>
+                <div class="panel body">
+                    <form method="post" action="" entype="multipart/form-data">
+                        {% csrf_token%}
+                        <div class="form-group">
+                            <button type="submit"class="btn btn-info" style="width=100%">Submit</button>
+
+                        </div>
+                        <p>Already registered?<a href="{% url 'photoapp:login_user'%}"></a>
+                        </p>
+                    </form>
+                </div>
+        </div>
+    </div>
+
+</div>
+    {% endblock %}

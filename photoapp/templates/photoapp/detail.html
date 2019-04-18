@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="col-sm-5">
+        <div class="thumbnail">
+            <table class="table">
+                <thead>
+            <div class="caption">
+                <img src="{{photo.url}}" class="img img-thumbnail img img-responsive">
+                <h3>{{ photo.description}}</h3>
+                <div class="panel-body">
+                    {% if message %}
+                    <p class="text-success">{{% message %}}</p>
+                    <tr>
+                        <th>update</th>
+                        <th>Delete</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                {% if photo.comment %}
+                    {% for comment in photo.comment %}
+                <tr>
+                    <td>{{% comment.photo %}}</td>
+                    <td>
+                        <a target="_blank" href="{% url '{photoapp:update_photo}' photo_id.comment_id %}">
+                        <button type="btn btn-success btn-xs">
+                            <span class="glymphicon-star.update"></span>&nbsp;update
+                        </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a target="_blank" href="{% url '{photoapp:Delete_photo}' photo_id.comment_id %}">
+                        <button type="btn btn-danger btn-xs">
+                            <span class="glymphicon-star.Delete"></span>&nbsp;Delete
+                        </button>
+                        </a>
+                    </td>
+                </tr>
+                <div class="col-sm-5">
+                    <ul class="nav nav-pills">
+                        <li role="presentation" class="active">
+                            <a href="{% url 'photoapp:comment_photo' photo_id  comment_id%}">comment</a>
+                        </li>
+                    </ul>
+                </div>
+
+                </tbody>
+                 {% endfor %}
+                {% endif %}
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
